@@ -1,0 +1,126 @@
+::-webkit-scrollbar { width:0px; height:0px; }
+.lg_bg{
+    background-image: url('../../Image/Img_login_bg.jpg');
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
+.lg_tit{
+    margin-top: 0px;
+    padding: 10px;
+
+    font-size: 45px;
+    letter-spacing: 3px;
+    font-family: 'Julius Sans One', sans-serif;
+    cursor: default;
+    animation-duration: 1.5s;
+    animation-name: ani1;
+}
+@keyframes ani1 {
+    from {
+        color:rgba(255, 255, 255, 0);
+        margin-left: 5%;
+    }
+    to {}
+  }
+.lg_cb{
+    display:inline-block;
+    width: 400px;
+    height: 440px;
+    border-radius: 30px;
+    background-color: rgb(36, 36, 36, 0.8);
+    box-shadow:0 0 10px gray;
+}
+.lg_bg_tit{
+    padding: 0px;
+    margin-bottom: 0px;
+    font-size: 32px;
+    font-weight: 1000;
+    letter-spacing: 1px;
+    font-family: 'Julius Sans One', sans-serif;
+    cursor: default;
+}
+.lg_bg_sbtit{
+    font-size: 14px;
+    color: rgb(180, 180, 180);
+    font-style: italic;
+    cursor: default;
+}
+.lg_bg_email{
+    margin-top: 15px;
+    width: 250px;
+    height: 35px;
+    border: 2px solid rgb(1, 72, 204);
+    border-radius: 20px;
+    background-color: rgb(36, 36, 36, 0.8);
+    text-align: center;
+    color: white;
+}
+.lg_bg_email:hover{
+    border: 2px solid white;
+}
+.lg_bg_pw{
+    margin-top: 15px;
+    width: 250px;
+    height: 35px;
+    border: 2px solid rgb(1, 72, 204);
+    border-radius: 20px;
+    background-color: rgb(36, 36, 36, 0.8);
+    text-align: center;
+    color: white;
+}
+.lg_bg_pw:hover{
+    border: 2px solid white;
+}
+.lg_bg_fp{
+    margin-top: 15px;
+    font-size: 14px;
+    color: rgb(180, 180, 180);
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.lg_bg_fp:hover{
+    color:white;
+}
+.lg_bg_su{
+    margin-top: 15px;
+    font-size: 14px;
+    color: rgb(180, 180, 180);
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.lg_bg_su:hover{
+    color:white;
+}
+.lg_bg_btn_lg{
+    margin-top: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+    border: 2px solid green;
+    border-radius: 20px;
+    background-color: rgb(36, 36, 36, 0.8);
+    color: white;
+    cursor: pointer;
+}
+.lg_bg_btn_lg:hover{
+    background-color: rgba(4, 105, 4, 0.466);
+}
+.lg_bg_g{
+    display: inline;
+    font-size: 27px;
+    cursor: pointer;
+    margin-right: 30px;
+}
+.lg_bg_fb{
+    font-size: 27px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.lg_bg_tt{
+    font-size: 27px;
+    cursor: pointer;
+}
