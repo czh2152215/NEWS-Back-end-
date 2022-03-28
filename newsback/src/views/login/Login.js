@@ -3,31 +3,58 @@ import {
   Component,
 } from 'react';
 import './Login.css'
-import { GooglePlusOutlined,FacebookOutlined,TwitterOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Checkbox } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
 
-class Login extends Component {
+export default function Login(){
 
-  render(){
+  const onFinish =(values)=>{
+    console.log(values)
+  }
+
     return(
       <div className='lg_bg'>
-        <p className='lg_tit'><br/>New System</p>
         <div className='lg_cb'>
-          <p className='lg_bg_tit'>Login</p>
-          <p className='lg_bg_sbtit'>Please Enter Your Username and Password</p>
-          <input className='lg_bg_email' placeholder='Username'></input>
-          <input className='lg_bg_pw' placeholder='Password' type="password"></input> 
-          <p className='lg_bg_fp'>Forget Password</p>
-          <p className='lg_bg_su'>Sign up</p>
-          <button className='lg_bg_btn_lg'>Login</button>
-          <br/><br/>
-          <GooglePlusOutlined className='lg_bg_g'/>
-          <FacebookOutlined className='lg_bg_fb'/>
-          <TwitterOutlined className='lg_bg_tt'/>
-        </div>
+          <p className='lg_cb_tit'>News System</p>
+        <Form
+      name="basic"
+      onFinish={onFinish}
+      autoComplete="off"
+      wrapperCol={{ span: 16 }}
+      labelCol={{ span: 6 }}
+      colon={false}
+    >
+      <Form.Item
+        name="username"
+        label={<label style={{ color: "white" }}><UserOutlined className="site-form-item-icon" />&nbsp;Username:</label>}
+        rules={[{ required: true, message: 'Please input your username!' }]}
+      >
+        <Input style={{borderRadius:"8px"}}/>
+      </Form.Item>
+
+      <Form.Item
+        name="password"
+        label={<label style={{ color: "white" }}><LockOutlined className="site-form-item-icon" />&nbsp;Password:</label>}
+        rules={[{ required: true, message: 'Please input your password!' }]}
+      >
+        <Input.Password style={{borderRadius:"8px"}}/>
+      </Form.Item>
+
+      <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 2, span: 15 }}>
+        <Checkbox style={{ color: "white"}}>Remember me</Checkbox>
+      </Form.Item>
+
+      <Form.Item wrapperCol={{ offset: 2, span: 12 }}>
+        <Button type="primary" htmlType="submit" style={{borderRadius:"10px"}}>
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+    </div>
       </div>
     )
-  }
+  
 }
 
-export default Login;
   
