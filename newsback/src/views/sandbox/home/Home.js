@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export default function Home() {
   const ajax = () =>{
-      axios.put("http://localhost:8000/posts/1", {
+      axios.put("http://localhost:5000/posts/1", {
         title: "1111-edit"
       })
   }
