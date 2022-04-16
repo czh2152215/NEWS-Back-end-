@@ -2,15 +2,26 @@ import {
     React, 
     Component,
   } from 'react';
-  import './Login.css'
-  import { Form, Input, Button, Checkbox } from 'antd';
-  import { UserOutlined, LockOutlined } from '@ant-design/icons';
-  import 'antd/dist/antd.css';
+import './Login.css'
+import { Form, Input, Button, Checkbox, message } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
   
-  export default function Login(){
-  
+function Login(props){
+    let navigate = useNavigate();
     const onFinish =(values)=>{
-      console.log(values)
+
+      axios.get(`http://localhost:5000/users?username=${values.username}&password=${values.password}&roleState=true&_expand=role`).then
+      (res=>{
+          if(res.data.length===0){
+              message.error("Incorrect username or password")
+          }else{
+              localStorage.setItem("token", JSON.stringify(res.data[0]))
+              navigate("/")
+          }
+      })
     }
   
       return(
@@ -56,4 +67,6 @@ import {
       )
     
   }
+
+  export default Login
   

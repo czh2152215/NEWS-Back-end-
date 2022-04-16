@@ -15,10 +15,12 @@ const { Header } = Layout;
         setCollapsed(!collapsed);
     }
 
+    const {role: {roleName},username} = JSON.parse(localStorage.getItem("token"))
+
     const menu = (
         <Menu>
             <Menu.Item>
-                Admin
+                {roleName}
             </Menu.Item>          
             <Menu.Item danger onClick={()=>{
                 localStorage.removeItem("token")
@@ -36,7 +38,7 @@ const { Header } = Layout;
 
             <div style={{ float: "right" }}>
                 <span>
-                    Welcome back
+                    Welcome back <b style={{color: "#1890ff"}}>{username}</b> &nbsp;
                 </span>
 
                 <Dropdown overlay={menu}>
