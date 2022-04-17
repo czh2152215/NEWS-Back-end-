@@ -19,7 +19,7 @@ function Login(props){
               message.error("Incorrect username or password")
           }else{
               localStorage.setItem("token", JSON.stringify(res.data[0]))
-              navigate("/")
+              window.location.href=("http://localhost:3000/#/home")
           }
       })
     }

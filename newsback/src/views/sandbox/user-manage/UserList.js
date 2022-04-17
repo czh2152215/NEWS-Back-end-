@@ -59,13 +59,13 @@ export default function UserList() {
         }
       ],
       onFilter:(value,item)=>{
-        if(value==="全球"){
+        if(value==="Global"){
           return item.region===""
         }
         return item.region===value
       },
       render: (region) => {
-        return <b>{region === ""?'全球':region}</b>;
+        return <b>{region === ""?'Global':region}</b>;
       },
     },
     {
@@ -153,7 +153,6 @@ export default function UserList() {
     addForm.current.validateFields().then(value=>{
 
       setisAddVisible(false)
-      addForm.current.resetFieldValue()
 
       axios.post(`http://localhost:5000/users`,{
         ...value,
