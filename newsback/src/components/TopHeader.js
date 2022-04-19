@@ -25,6 +25,7 @@ const { Header } = Layout;
             <Menu.Item danger onClick={()=>{
                 localStorage.removeItem("token")
                 window.location.href="http://localhost:3000/#/login"
+                window.localStorage.removeItem('token');
             }}>Exit</Menu.Item>
         </Menu>
     );

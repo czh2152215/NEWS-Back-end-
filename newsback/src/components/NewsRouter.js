@@ -20,9 +20,9 @@ const LocalRouterMap = {
     "/user-manage/list": <UserList/>,
     "/right-manage/role/list": <RoleList/>,
     "/right-manage/right/list": <RightList/>,
-    "/user-manage/add": <NewsAdd/>,
-    "/user-manage/draft": <NewsDraft/>,
-    "/user-manage/category": <NewsCategory/>,
+    "/news-manage/add": <NewsAdd/>,
+    "/news-manage/draft": <NewsDraft/>,
+    "/news-manage/category": <NewsCategory/>,
     "/audit-manage/audit": <Audit/>,
     "/audit-manage/list": <AuditList/>,
     "/publish-manage/unpublished": <Unpublished/>,
@@ -39,7 +39,7 @@ export default function NewsRouter(){
             axios.get("http://localhost:5000/children"),
         ]).then(res=>{
             setBackRouteList([...res[0].data,...res[1].data])
-            console.log(BackRouteList)
+            console.log([...res[0].data,...res[1].data])
         })
     },[])
 
@@ -60,17 +60,14 @@ export default function NewsRouter(){
             <Route path="right-manage/role/list" element={<RoleList />} />
             <Route path="right-manage/right/list" element={<RightList />} /> */}
             {BackRouteList.map(item=>{
-                if(checkRoute(item) && CheckUserPermission(item)){
+                if(CheckUserPermission(item) && checkRoute(item)){
                     return <Route path={item.key} key={item.key} element={LocalRouterMap[item.key]} exact></Route>
                 }else{
                     return null
                 }
             })}
-            <Route path="/" element={<Navigate replace from="/" to="home" />} />
-            {/* <Route path="/*" element={<NoPermission />} /> */}
-            {
-                BackRouteList.length>0 && <Route path="*" element={<NoPermission />}></Route>
-            }
+            <Route path="/" element={<Navigate replace from="/" to="/home" />} />
+            <Route path="*" element={<NoPermission />} />
         </Routes>
     )
 }

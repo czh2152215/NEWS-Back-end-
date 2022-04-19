@@ -70,8 +70,7 @@ export default function SideMenu({ collapsed }) {
     const {role: {rights}} = JSON.parse(localStorage.getItem("token"))
 
     const checkPagePermission = (item) => {
-        return item.pagepermisson 
-        //&& rights.includes(item.key)
+        return item.pagepermisson && rights.checked.includes(item.key)
     }
 
     // Menu
