@@ -63,7 +63,6 @@ export default function SideMenu({ collapsed }) {
 
     useEffect(() => {
         axios.get("http://localhost:5000/rights?_embed=children").then(res => {
-            console.log(res.data);
             setMenu(res.data)
         })
     }, [])
@@ -72,7 +71,6 @@ export default function SideMenu({ collapsed }) {
 
     const checkPagePermission = (item) => {
         return item.pagepermisson 
-        //bug exists below
         //&& rights.includes(item.key)
     }
 
