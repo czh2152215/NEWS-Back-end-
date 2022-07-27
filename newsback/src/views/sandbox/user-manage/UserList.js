@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Table, Tag, Button, Modal, Switch, Form, Input, Select } from "antd";
+import { Button, Table, Modal, Switch } from 'antd'
 import axios from "axios";
 import UserForm from "../../../components/User-manage/UserForm";
 import {
@@ -7,8 +7,8 @@ import {
   EditOutlined,
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
-import Item from "antd/lib/list/Item";
-import { formatStrategyValues } from "rc-tree-select/lib/utils/strategyUtil";
+// import Item from "antd/lib/list/Item";
+// import { formatStrategyValues } from "rc-tree-select/lib/utils/strategyUtil";
 
 const { confirm } = Modal;
 
@@ -19,7 +19,7 @@ export default function UserList() {
   const [roleList, setroleList] = useState([]);
   const [regionList, setregionList] = useState([]);
   const [current, setcurrent] = useState(null);
-
+ 
   const [isUpdateDisabled, setisUpdateDisabled] = useState(false);
   const addForm = useRef(null)
   const updateForm = useRef(null)

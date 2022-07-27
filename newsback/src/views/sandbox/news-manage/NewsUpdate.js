@@ -4,17 +4,20 @@ import "./News.css"
 import axios from "axios";
 import NewsEditor from "../../../components/news-manage/NewsEditor";
 
+import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 const {Step} = Steps;
 const {Option} = Select;
-export default function NewsAdd(){
+export default function NewsUpdate(){
     const [current,setcurrent] = useState(0)
     const [categoryList, setcategoryList] = useState([])
     
 
     const [formInfo, setformInfo] = useState({})
-    const [content, setcontent] = useState('')
+    const [content, setContent] = useState("")
 
-    const User = JSON.parse(localStorage.getItem("token"))
+    
 
     const handleNext = () =>{
         if(current===0){
@@ -33,7 +36,7 @@ export default function NewsAdd(){
             }
         }
     }
-
+            
     const handleLast = () =>{
         setcurrent(current-1)
     }
@@ -41,28 +44,40 @@ export default function NewsAdd(){
         labelCol: {span: 2},
         wrappercol: {span: 14}
     }
+
     const NewsForm = useRef(null)
+
     useEffect(()=>{
-        axios.get("/categories").then(res=>{
+        axios.get("/categories  ").then(res=>{
             setcategoryList(res.data)
         })
     },[])
 
+    const navigate = useNavigate(); 
+    const params = useParams(); 
+    useEffect(() => {
+        
+        axios.get(`/news/${params.id}?_expand=category&_expand=role`).then(res => {
+
+                let {title,categoryId,content} = res.data
+            NewsForm.current.setFieldsValue({
+                title,
+                categoryId,
+
+            })   
+                setContent(content)
+            })
+    }, [params.id])
+                
+
+
     const handleSave = (auditState) =>{
-        axios.post('/news',{
+        axios.patch(`/news/${params.id}`, {
             ...formInfo,
             "content": content,
-            "region": User.region ? User.region : "Global",
-            "author": User.username,
-            "roleId": User.roleId,
             "auditState": auditState,
-            "publishState": 0,
-            "createTime": Date.now(),
-            "star": 0,
-            "view": 0,
-            //"publishTime": 0,
         }).then(res=>{
-            window.location.href=(auditState===0 ? "http://localhost:3000/#/news-manage/draft" : "http://localhost:3000/#/audit-manage/list")
+            navigate(auditState===0?'/news-manage/draft':'/audit-manage/list')
 
             notification.info({
                 message: "Notification",
@@ -76,7 +91,8 @@ export default function NewsAdd(){
         <div>
             <PageHeader
                 className="site-page-header"
-                title="Add News"
+                title="Update News"
+                onBack={()=>window.history.back()}
                 subTitle="This is a subtitle"
            />
 
@@ -119,13 +135,13 @@ export default function NewsAdd(){
         </div>
         </div>
 
-        <div className={current===1?"":'active'}>
+        <div className={current===1?'':'active'}>
             <NewsEditor getContent={(value)=>{
-                console.log(value)
-                setcontent(value)
-            }}/>
-        </div>
-        <div className={current===2?"":'active'}>
+                // console.log(value)
+                setContent(value)
+            }} content={content}></NewsEditor>
+        </div>  
+        <div className={current===2?'':'active'}>
             
         </div>
         

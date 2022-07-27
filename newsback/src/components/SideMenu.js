@@ -72,7 +72,7 @@ export default function SideMenu({ collapsed }) {
     const checkPagePermission = (item) => {
         return item.pagepermisson && rights.checked.includes(item.key)
     }
-
+    
     // Menu
     const renderMenu = (menuList) => {
         return menuList.map((item) => {
