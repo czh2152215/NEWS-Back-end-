@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import {Table,Button,Tag,notification} from 'antd'
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 export default function AuditList(props) {
     const [dataSource, setdataSource] = useState([])
     const {username} = JSON.parse(localStorage.getItem("token"))
+    const navigate = useNavigate(); 
     useEffect(()=>{
         axios(`/news?author=${username}&auditState_ne=0&publishState_lte=1&_expand=category`).then(res=>{
             console.log(res.data)
@@ -75,7 +77,7 @@ export default function AuditList(props) {
     }
 
     const handleUpdate = (item)=>{
-        props.history.push(`/news-manage/update/${item.id}`)
+        navigate(`/news-manage/update/${item.id}`)
     }
 
     const handlePublish = (item)=>{
@@ -83,7 +85,7 @@ export default function AuditList(props) {
             "publishState": 2,
             "publishTime":Date.now()
         }).then(res=>{
-            props.history.push('/publish-manage/published')
+            navigate('/publish-manage/published')
 
             notification.info({
                 message: `Notification`,

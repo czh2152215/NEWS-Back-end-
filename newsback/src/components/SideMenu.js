@@ -63,6 +63,7 @@ export default function SideMenu({ collapsed }) {
 
     useEffect(() => {
         axios.get("http://localhost:5000/rights?_embed=children").then(res => {
+            
             setMenu(res.data)
         })
     }, [])

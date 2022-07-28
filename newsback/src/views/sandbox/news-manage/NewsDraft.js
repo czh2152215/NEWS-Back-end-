@@ -82,7 +82,7 @@ export default function NewsDraft(props) {
 
   const confirmMethod = (item) => {
     confirm({
-      title: "Are you sure you want to DELETE?",
+      title: "Are you sure you want to DELETE ?",
       icon: <ExclamationCircleOutlined />,
       onOk() {
         deleteMethod(item);
