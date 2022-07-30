@@ -106,7 +106,7 @@ export default function NewsDraft(props) {
         });
     })
 }
-
+ 
   const deleteMethod = (item) => {
     // if (item.grade === 1) {
     
